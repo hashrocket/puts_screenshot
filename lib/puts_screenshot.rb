@@ -34,11 +34,11 @@ To puts a screenshot from #{Capybara.current_driver} try this:
     system(<<-CMD)
       webkit2png #{html_path} -D #{Capybara.save_and_open_page_path} -o #{html_path.basename} -F > /dev/null
     CMD
-      Dir[Capybara.save_and_open_page_path.join("*.png")]
-      .map(&method(:Pathname))
-      .find do |file|
-        file.to_s.start_with? html_path.to_s
-      end
+
+    Dir[Capybara.save_and_open_page_path.join("*.png")]
+    .map(&method(:Pathname))
+    .find do |file|
+      file.to_s.start_with? html_path.to_s
     end
   end
 
